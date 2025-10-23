@@ -94,32 +94,34 @@
     </div>
 
     <script>
-        const keyboard = document.getElementById('keyboard');
-        const switchBtn = document.getElementById('switchBtn');
-        let currentMode = 0; // 0:A-I, 1:J-R, 2:S-Z+?
-        let inputText = ''; // 存储输入的内容
+        // 兼容Firefox 39.0的代码
+        var keyboard = document.getElementById('keyboard');
+        var switchBtn = document.getElementById('switchBtn');
+        var currentMode = 0; // 0:A-I, 1:J-R, 2:S-Z+?
+        var inputText = ''; // 存储输入的内容
         
         // 切换键盘函数
         function toggleKeyboard() {
-            const keys = keyboard.querySelectorAll('td');
+            var keys = keyboard.getElementsByTagName('td');
+            var i;
             
             currentMode = (currentMode + 1) % 3; // 循环切换0,1,2
             
             if (currentMode === 0) {
                 // A-I
-                for (let i = 0; i < keys.length; i++) {
+                for (i = 0; i < keys.length; i++) {
                     keys[i].textContent = String.fromCharCode(65 + i); // 65是A的ASCII码
                     keys[i].className = '';
                 }
             } else if (currentMode === 1) {
                 // J-R
-                for (let i = 0; i < keys.length; i++) {
+                for (i = 0; i < keys.length; i++) {
                     keys[i].textContent = String.fromCharCode(74 + i); // 74是J的ASCII码
                     keys[i].className = '';
                 }
             } else {
                 // S-Z+?
-                for (let i = 0; i < keys.length; i++) {
+                for (i = 0; i < keys.length; i++) {
                     if (i < 8) {
                         keys[i].textContent = String.fromCharCode(83 + i); // 83是S的ASCII码
                     } else {
@@ -134,7 +136,7 @@
         function handleKeyClick(key) {
             if (key === '?') {
                 // 跳转到当前页面/?=输入的内容
-                window.location.href = `type.html?=${encodeURIComponent(inputText)}`;
+                window.location.href = '/?=' + encodeURIComponent(inputText);
             } else {
                 // 添加到输入内容
                 inputText += key;
@@ -142,16 +144,16 @@
             }
         }
         
-        // 绑定点击事件
-        switchBtn.addEventListener('click', toggleKeyboard);
+        // 绑定点击事件 (兼容旧版Firefox)
+        switchBtn.onclick = toggleKeyboard;
         
-        // 为每个键添加点击事件
-        const keys = keyboard.querySelectorAll('td');
-        keys.forEach(key => {
-            key.addEventListener('click', function() {
-                handleKeyClick(this.textContent);
-            });
-        });
+        // 为每个键添加点击事件 (兼容旧版Firefox)
+        var keys = keyboard.getElementsByTagName('td');
+        for (var i = 0; i < keys.length; i++) {
+            keys[i].onclick = function() {
+                handleKeyClick(this.textContent || this.innerText);
+            };
+        }
     </script>
 </body>
 </html>
