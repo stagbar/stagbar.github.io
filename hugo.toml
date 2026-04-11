@@ -1,5 +1,5 @@
 baseURL = "https://stagbar.github.io/"
-locale = 'en-us'
+defaultContentLanguage = "zh-hans"
 title = 'My New Hugo Project'
 theme = 'ananke'
 
