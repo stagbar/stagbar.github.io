@@ -16,25 +16,18 @@
       <description>&lt;h1 id=&#34;introduction&#34;&gt;introduction&lt;/h1&gt;&#xA;&lt;p&gt;This is &lt;strong&gt;bold&lt;/strong&gt; text, and this is &lt;em&gt;emphasized&lt;/em&gt; text.&lt;/p&gt;&#xA;&lt;p&gt;Visit the &lt;a href=&#34;gohugo.io&#34;&gt;Hugo&lt;/a&gt; website!&lt;/p&gt;</description>
     </item>
     <item>
-      <title></title>
+      <title>记录一些好玩的空间类解谜游戏</title>
       <link>https://stagbar.github.io/posts/1/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://stagbar.github.io/posts/1/</guid>
-      <description>&lt;p&gt;快中考了啊啊啊啊&lt;/p&gt;</description>
+      <description>&lt;p&gt;1.prune&lt;/p&gt;&#xA;&lt;p&gt;貌似微软商店搜不到了&lt;/p&gt;&#xA;&lt;p&gt;2.纪念碑谷&lt;/p&gt;&#xA;&lt;p&gt;2的话epic送过&lt;/p&gt;&#xA;&lt;p&gt;3.多重花园&lt;/p&gt;&#xA;&lt;p&gt;中国台服价格比国服还低？（史低&lt;/p&gt;</description>
     </item>
     <item>
-      <title></title>
+      <title>一些常用的Csharp指令笔记</title>
       <link>https://stagbar.github.io/posts/2/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://stagbar.github.io/posts/2/</guid>
-      <description>&lt;h1 id=&#34;记录一些好玩的空间类解谜游戏&#34;&gt;记录一些好玩的空间类解谜游戏&lt;/h1&gt;&#xA;&lt;p&gt;1.prune&lt;/p&gt;&#xA;&lt;p&gt;貌似微软商店搜不到了&lt;/p&gt;&#xA;&lt;p&gt;2.纪念碑谷&lt;/p&gt;&#xA;&lt;p&gt;2的话epic送过&lt;/p&gt;&#xA;&lt;p&gt;3.多重花园&lt;/p&gt;&#xA;&lt;p&gt;中国台服务器价格比国服务器还低？（史低&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title></title>
-      <link>https://stagbar.github.io/posts/3/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://stagbar.github.io/posts/3/</guid>
-      <description>&lt;h4 id=&#34;一些常用的c指令笔记&#34;&gt;一些常用的C#指令笔记：&lt;/h4&gt;&#xA;&lt;p&gt;使用dotnet创建gui&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;dotnet new winforms -n HelloGui&#xD;&#xA;&#xD;&#xA;cd HelloGui&#xD;&#xA;&#xD;&#xA;code .&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;一些其他类型的：&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;控制台 dotnet new console -n xxx&lt;/li&gt;&#xA;&lt;li&gt;类库 dotnet new classlib -n xxx&lt;/li&gt;&#xA;&lt;li&gt;空Web dotnet new web -n xxx&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;运行：&#xA;在vscode中按下三角，或者按F5(习惯）&lt;/p&gt;&#xA;&lt;p&gt;在命令行cd进项目，输入&lt;!-- raw HTML omitted --&gt;dotnet run&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;1.使用dotnet创建gui&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;dotnet new winforms -n HelloGui&#xD;&#xA;&#xD;&#xA;cd HelloGui&#xD;&#xA;&#xD;&#xA;code .&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;一些其他类型的：&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;控制台 dotnet new console -n xxx&lt;/li&gt;&#xA;&lt;li&gt;类库 dotnet new classlib -n xxx&lt;/li&gt;&#xA;&lt;li&gt;空Web dotnet new web -n xxx&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;2.运行：&#xA;在vscode中按下三角，或者按F5(习惯）&lt;/p&gt;&#xA;&lt;p&gt;在命令行cd进项目，输入dotnet run&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
