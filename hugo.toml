@@ -7,3 +7,5 @@ theme = 'ananke'
   [caches.images]
     dir = ':cacheDir/images'
 
+[params]
+custom_css = ["custom.css"]
