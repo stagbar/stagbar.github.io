@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>手表九宫格键盘</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+  body {
+    width:240px; height:240px; overflow:hidden;
+    background:#111;
+    font-family:Arial, sans-serif;
+    display:flex; flex-direction:column;
+    user-select:none;
+  }
+  /* 顶部已输入内容显示 */
+  #display {
+    height:36px; line-height:36px;
+    padding:0 8px;
+    color:#fff; font-size:13px;
+    white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+    border-bottom:1px solid #333;
+  }
+  /* 键盘区域 */
+  #keyboard {
+    flex:1;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    grid-template-rows:repeat(3,1fr) 1fr;
+    gap:4px; padding:4px;
+  }
+  button {
+    border:none; border-radius:6px;
+    font-size:15px; font-weight:bold;
+    cursor:pointer; color:#fff;
+  }
+  .key { background:#000; border:1px solid #444; }
+  .key:active { background:#333; }
+  #toggleBtn { background:#1a5fb4; }
+  #toggleBtn:active { background:#3584e4; }
+  #checkBtn { background:#2ea043; }
+  #checkBtn:active { background:#3fb950; }
+</style>
+</head>
+<body>
+
+<!-- 顶部显示已输入的网址 -->
+<div id="display"></div>
+
+<!-- 键盘 -->
+<div id="keyboard">
+  <button class="key" onclick="typeChar(this)">a</button>
+  <button class="key" onclick="typeChar(this)">b</button>
+  <button class="key" onclick="typeChar(this)">c</button>
+  <button class="key" onclick="typeChar(this)">d</button>
+  <button class="key" onclick="typeChar(this)">e</button>
+  <button class="key" onclick="typeChar(this)">f</button>
+  <button class="key" onclick="typeChar(this)">g</button>
+  <button class="key" onclick="typeChar(this)">h</button>
+  <button class="key" onclick="typeChar(this)">i</button>
+  <button id="toggleBtn" onclick="toggleKeys()">切换</button>
+  <button class="key" onclick="backspace()">-</button>
+  <button id="checkBtn" onclick="goToUrl()">✓</button>
+</div>
+
+<script>
+  // 三组按键：abcdefghi → jklmnopqr → stuvwxyz.
+  const keySets = [
+    ['a','b','c','d','e','f','g','h','i'],
+    ['j','k','l','m','n','o','p','q','r'],
+    ['s','t','u','v','w','x','y','z','.']
+  ];
+  let setIndex = 0;
+  const letterKeys = document.querySelectorAll('#keyboard .key');
+
+  function toggleKeys() {
+    setIndex = (setIndex + 1) % keySets.length;
+    letterKeys.forEach((btn, i) => btn.textContent = keySets[setIndex][i]);
+  }
+
+  function typeChar(btn) {
+    document.getElementById('display').textContent += btn.textContent;
+  }
+
+  function backspace() {
+    const d = document.getElementById('display');
+    d.textContent = d.textContent.slice(0, -1);
+  }
+
+  function goToUrl() {
+    let url = document.getElementById('display').textContent.trim();
+    if (!url) return;                       // 没输入就不跳
+    if (!/^https?:\/\//i.test(url)) {
+      url = 'https://' + url;               // 自动补全协议
+    }
+    window.location.href = url;             // 跳转到输入的网址
+  }
+</script>
+
+</body>
+</html>
