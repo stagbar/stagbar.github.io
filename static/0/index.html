@@ -1,16 +1,96 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>ASCII工具</title>
 </head>
-<body style="font-size:20px;">
-<script>
-  document.write("dpr = " + window.devicePixelRatio + "<br>");
-  document.write("screen.width = " + screen.width + "<br>");
-  document.write("screen.height = " + screen.height + "<br>");
-  document.write("innerWidth = " + window.innerWidth + "<br>");
-  document.write("innerHeight = " + window.innerHeight);
+<body bgcolor="#ffffff" text="#000000" link="#0000ee" vlink="#551a8b">
+
+<center>
+<b>ASCII 工具</b>
+</center>
+
+<hr>
+
+<form method="get" action="">
+
+<b>解码（数字→字符）</b><br>
+长度（偶数）：<input type="text" name="len" value="" size="6"><br>
+数字串（每两位）：<input type="text" name="str" value="" size="20"><br>
+<input type="submit" name="do" value="解码">
+
+<br><br>
+
+<b>编码（字符→数字）</b><br>
+字符：<input type="text" name="txt" value="" size="20"><br>
+<input type="submit" name="do" value="编码">
+
+</form>
+
+<hr>
+
+<b>结果：</b><br>
+<pre id="out"></pre>
+
+<script type="text/javascript">
+// 从 URL 读取参数（兼容老浏览器，不用 URLSearchParams）
+function getParam(name) {
+    var s = location.search; // 形如 ?len=6&str=333333&do=%E8%A7%A3%E7%A0%81
+    if (!s) return "";
+    s = s.substring(1);
+    var parts = s.split("&");
+    for (var i = 0; i < parts.length; i++) {
+        var kv = parts[i].split("=");
+        if (decodeURIComponent(kv[0]) === name && kv.length > 1) {
+            return decodeURIComponent(kv[1]);
+        }
+    }
+    return "";
+}
+
+var len = getParam("len");
+var str = getParam("str");
+var txt = getParam("txt");
+var doWhat = getParam("do");
+
+var out = document.getElementById("out");
+// 兼容极老浏览器：优先 textContent，否则 innerText
+function setOut(text) {
+    if (out.textContent !== undefined) out.textContent = text;
+    else out.innerText = text;
+}
+
+if (doWhat === "解码" && str !== "") {
+    // 去空格，只留数字
+    str = str.replace(/[^0-9]/g, "");
+    var L = parseInt(len, 10);
+    if (isNaN(L) || L <= 0) L = str.length;
+    var res = "";
+    for (var i = 0; i + 1 < str.length && (i / 2) * 2 < L; i += 2) {
+        var num = parseInt(str.substring(i, i + 2), 10);
+        if (!isNaN(num)) {
+            res = res + String.fromCharCode(num + 32);
+        }
+    }
+    setOut(res);
+} else if (doWhat === "编码" && txt !== "") {
+    var res = "";
+    for (var i = 0; i < txt.length; i++) {
+        var code = txt.charCodeAt(i);
+        var num = code - 32; // 0..95
+        if (num < 10) res = res + "0" + num;
+        else res = res + num;
+    }
+    setOut(res);
+}
 </script>
+
+<hr>
+
+<small>
+说明：目标数(每两位) + 32 = ASCII码。如 6 / 333333 → AAA（33+32=65=A）；6 / 000000 → 三个空格（0+32=32=空格）。
+</small>
+
 </body>
 </html>
